@@ -2,9 +2,10 @@ package org.apache.shiro.spring.boot;
 
 import org.apache.shiro.spring.boot.csrfguard.CsrfguardConstants;
 import org.apache.shiro.spring.boot.csrfguard.CsrfguardJavascriptServletProperties;
-import org.apache.shiro.spring.boot.csrfguard.web.filter.CsrfGuardFilter;
+import org.apache.shiro.spring.boot.csrfguard.web.filter.CsrfGuardControlFilter;
 import org.owasp.csrfguard.CsrfGuard;
 import org.owasp.csrfguard.CsrfGuardHttpSessionListener;
+import org.owasp.csrfguard.CsrfGuardServletContextListener;
 import org.owasp.csrfguard.servlet.JavaScriptServlet;
 import org.springframework.beans.BeansException;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -78,16 +79,21 @@ public class ShiroCsrfguardAutoConfiguration implements ApplicationContextAware 
 	
 	@Bean("csrf")
     @ConditionalOnMissingBean(name = "csrf")
-    protected FilterRegistrationBean<CsrfGuardFilter> csrfGuardFilter() throws Exception {
+    protected FilterRegistrationBean<CsrfGuardControlFilter> csrfGuardFilter() throws Exception {
 
-        FilterRegistrationBean<CsrfGuardFilter> registration = new FilterRegistrationBean<CsrfGuardFilter>();
-        registration.setFilter(new CsrfGuardFilter());
+        FilterRegistrationBean<CsrfGuardControlFilter> registration = new FilterRegistrationBean<CsrfGuardControlFilter>();
+        registration.setFilter(new CsrfGuardControlFilter());
         registration.setOrder(Integer.MIN_VALUE);
         registration.setEnabled(false);
         return registration;
         
     }
-	
+
+	@Bean
+	protected CsrfGuardServletContextListener csrfGuardServletContextListener() {
+		return new CsrfGuardServletContextListener();
+	}
+
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;

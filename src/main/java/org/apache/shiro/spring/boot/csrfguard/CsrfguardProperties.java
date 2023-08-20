@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+import lombok.Data;
 import org.apache.commons.collections.MapUtils;
 import org.apache.shiro.biz.utils.StringUtils;
 
@@ -29,6 +30,7 @@ import org.apache.shiro.biz.utils.StringUtils;
  * TODO
  * @author ： <a href="https://github.com/hiwepy">hiwepy</a>
  */
+@Data
 public class CsrfguardProperties {
 
 	private final static String ACTION_PREFIX = "org.owasp.csrfguard.action.";
@@ -96,174 +98,6 @@ public class CsrfguardProperties {
 	private Set<String> protectedMethods = new HashSet<String>();
 
 	private Set<String> unprotectedMethods = new HashSet<String>();
-
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
-
-	public LoggerType getLogger() {
-		return logger;
-	}
-
-	public void setLogger(LoggerType logger) {
-		this.logger = logger;
-	}
-
-	public String getTokenName() {
-		return tokenName;
-	}
-
-	public void setTokenName(String tokenName) {
-		this.tokenName = tokenName;
-	}
-
-	public int getTokenLength() {
-		return tokenLength;
-	}
-
-	public void setTokenLength(int tokenLength) {
-		this.tokenLength = tokenLength;
-	}
-
-	public boolean isRotateEnabled() {
-		return rotateEnabled;
-	}
-
-	public void setRotateEnabled(boolean rotateEnabled) {
-		this.rotateEnabled = rotateEnabled;
-	}
-
-	public boolean isTokenPerPageEnabled() {
-		return tokenPerPageEnabled;
-	}
-
-	public void setTokenPerPageEnabled(boolean tokenPerPageEnabled) {
-		this.tokenPerPageEnabled = tokenPerPageEnabled;
-	}
-
-	public boolean isValidationWhenNoSessionExists() {
-		return validationWhenNoSessionExists;
-	}
-
-	public void setValidationWhenNoSessionExists(boolean validationWhenNoSessionExists) {
-		this.validationWhenNoSessionExists = validationWhenNoSessionExists;
-	}
-
-	public boolean isTokenPerPagePrecreateEnabled() {
-		return tokenPerPagePrecreateEnabled;
-	}
-
-	public void setTokenPerPagePrecreateEnabled(boolean tokenPerPagePrecreateEnabled) {
-		this.tokenPerPagePrecreateEnabled = tokenPerPagePrecreateEnabled;
-	}
-
-	public boolean isPrintConfig() {
-		return printConfig;
-	}
-
-	public void setPrintConfig(boolean printConfig) {
-		this.printConfig = printConfig;
-	}
-
-	public String getPrng() {
-		return prng;
-	}
-
-	public void setPrng(String prng) {
-		this.prng = prng;
-	}
-
-	public String getPrngProvider() {
-		return prngProvider;
-	}
-
-	public void setPrngProvider(String prngProvider) {
-		this.prngProvider = prngProvider;
-	}
-
-	public String getNewTokenLandingPage() {
-		return newTokenLandingPage;
-	}
-
-	public void setNewTokenLandingPage(String newTokenLandingPage) {
-		this.newTokenLandingPage = newTokenLandingPage;
-	}
-
-	public boolean isUseNewTokenLandingPage() {
-		return useNewTokenLandingPage;
-	}
-
-	public void setUseNewTokenLandingPage(boolean useNewTokenLandingPage) {
-		this.useNewTokenLandingPage = useNewTokenLandingPage;
-	}
-
-	public boolean isAjaxEnabled() {
-		return ajaxEnabled;
-	}
-
-	public void setAjaxEnabled(boolean ajaxEnabled) {
-		this.ajaxEnabled = ajaxEnabled;
-	}
-
-	public boolean isProtectEnabled() {
-		return protectEnabled;
-	}
-
-	public void setProtectEnabled(boolean protectEnabled) {
-		this.protectEnabled = protectEnabled;
-	}
-
-	public String getSessionKey() {
-		return sessionKey;
-	}
-
-	public void setSessionKey(String sessionKey) {
-		this.sessionKey = sessionKey;
-	}
-
-	public Map<String, String> getActions() {
-		return actions;
-	}
-
-	public void setActions(Map<String, String> actions) {
-		this.actions = actions;
-	}
-
-	public Map<String, String> getProtectedPages() {
-		return protectedPages;
-	}
-
-	public void setProtectedPages(Map<String, String> protectedPages) {
-		this.protectedPages = protectedPages;
-	}
-
-	public Map<String, String> getUnprotectedPages() {
-		return unprotectedPages;
-	}
-
-	public void setUnprotectedPages(Map<String, String> unprotectedPages) {
-		this.unprotectedPages = unprotectedPages;
-	}
-
-	public Set<String> getProtectedMethods() {
-		return protectedMethods;
-	}
-
-	public void setProtectedMethods(Set<String> protectedMethods) {
-		this.protectedMethods = protectedMethods;
-	}
-
-	public Set<String> getUnprotectedMethods() {
-		return unprotectedMethods;
-	}
-
-	public void setUnprotectedMethods(Set<String> unprotectedMethods) {
-		this.unprotectedMethods = unprotectedMethods;
-	}
 
 	public Properties toProperties() {
 
